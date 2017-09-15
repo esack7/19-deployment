@@ -2,7 +2,6 @@
 
 const faker = require('faker');
 const mocks = require('../lib/mocks');
-// const User = require('../../model/user');
 const superagent = require('superagent');
 const server = require('../../lib/server');
 
@@ -28,7 +27,6 @@ describe('Testing basic auth routes', function() {
       });
 
       test('should respond with a token', () => {
-        // expect(this.res.text).toMatch('/[a-f0-9]{32}/')
         expect(this.res.text).toBeTruthy();
         expect(this.res.text.length > 1).toBeTruthy();
       });

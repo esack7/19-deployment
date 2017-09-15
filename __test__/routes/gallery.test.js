@@ -4,7 +4,6 @@ const faker = require('faker');
 const mocks = require('../lib/mocks');
 const superagent = require('superagent');
 const server = require('../../lib/server');
-// const Gallery = require('../../model/gallery');
 
 describe('Testing Gallery Routes', function() {
   beforeAll(server.start);
@@ -55,15 +54,6 @@ describe('Testing Gallery Routes', function() {
           .send(this.fakeGalleryData)
           .catch(err => {
             expect(err.status).toBe(401);
-          });
-      });
-
-      xtest('should return 400 given bad req body', () => {
-        return superagent.post(':4444/api/gallery')
-          .set('Authorization', `Bearer ${this.userData.token}`)
-          .send({})
-          .catch(err => {
-            expect(err.status).toBe(400);
           });
       });
     });
