@@ -1,12 +1,13 @@
 'use strict';
 
+const jsonParser = require('body-parser').json();
 const debug = require('debug')('cfgram:route-auth');
 const errorHandler = require('../lib/error-handler');
 const basicAuth = require('../lib/basic-auth-middleware');
 const User = require('../model/user');
 
 module.exports = function(router) {
-  router.post('/api/signup', (req, res) => {
+  router.post('/api/signup', jsonParser, (req, res) => {
     debug('POST /api/signup');
 
     // get rid of this before the req is handed back as a nested object in the res
